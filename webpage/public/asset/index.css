@@ -1,0 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+#iejcp {
+  font-weight: 700;
+  background-color: #ffffff;
+  text-shadow: 1px 1px 0px #847979;
+}
