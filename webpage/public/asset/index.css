@@ -4,8 +4,6 @@
 body {
   margin: 0;
 }
-#iejcp {
-  font-weight: 700;
-  background-color: #ffffff;
-  text-shadow: 1px 1px 0px #847979;
+.language-btn {
+  margin: 0px 3px 0px 0px;
 }

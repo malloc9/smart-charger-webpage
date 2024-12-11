@@ -161,7 +161,7 @@
       }
 
       // Example: Load English by default
-      loadLanguage("en");
+      loadLanguage("hu");
     </script>
   </head>
   <body>
@@ -194,20 +194,31 @@
           <a class="mr-5 hover:text-gray-900">Third Link</a>
           <a class="mr-5 hover:text-gray-900">Fourth Link</a>
         </nav>
-        <!--button onclick="loadLanguage('hu')">
+        <div id="ijl38t"></div>
+        <div id="i1hh4r"></div>
+        <div onclick="loadLanguage('en')" class="language-btn"></div>
+        <button
+          data-lang="hu"
+          onclick="loadLanguage('hu')"
+          class="language-btn"
+        >
           <img
-            src="asset/hungary-flag-round-circle-icon.png"
+            src="/asset/hungary.png"
             alt="Magyar"
             style="width: 24px; height: 24px"
           />
         </button>
-        <button onclick="loadLanguage('en')">
+        <button
+          data-lang="en"
+          onclick="loadLanguage('en')"
+          class="language-btn"
+        >
           <img
-            src="asset/uk-flag-round-circle-icon.png"
+            src="/asset/uk.png"
             alt="English"
             style="width: 24px; height: 24px"
           />
-        </button-->
+        </button>
       </div>
     </header>
     <footer class="text-gray-600 body-font"></footer>
@@ -220,8 +231,6 @@
             class="object-cover object-center h-full w-full"
           />
         </div>
-        <p data-i18n="greeting"></p>
-
         <div
           class="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center"
         >
@@ -235,7 +244,10 @@
               <h2 class="text-gray-900 text-lg title-font font-medium mb-3">
                 Monitor
               </h2>
-              <p class="leading-relaxed text-base">
+              <p
+                class="leading-relaxed text-base"
+                data-i18n="monitoring_content"
+              >
                 Keep track of all your electric vehicle chargers in real time.
                 View charger status, energy consumption, and session details at
                 a glance, ensuring you’re always informed about your charging

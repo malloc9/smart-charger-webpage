@@ -394,38 +394,54 @@
         },
       });
 
-      /*
-      // Add "Import" button to the default panel
-      const panelManager = editor.Panels;
-      panelManager.addButton("options", {
-        id: "import",
-        className: "btn-import",
-        label: "Import",
-        command: "import-html",
-        attributes: { title: "Import HTML" },
+      // Add Hungarian language button component
+      editor.DomComponents.addType("language-button-hu", {
+        isComponent: (el) =>
+          el.tagName === "BUTTON" && el.dataset.lang === "hu",
+        model: {
+          defaults: {
+            tagName: "button",
+            attributes: {
+              class: "language-btn",
+              "data-lang": "hu",
+              onclick: "loadLanguage('hu')",
+            },
+            content: `<img src="/asset/hungary.png" alt="Magyar" style="width: 24px; height: 24px;">`,
+          },
+        },
       });
 
-      // Add "Import" command
-      editor.Commands.add("import-html", {
-        run(editor, sender) {
-          sender && sender.set("active", 0); // Turn off the button
-          const modal = editor.Modal;
-          const content = `
-            <textarea id="import-area" style="width:100%; height:250px;"></textarea>
-            <button id="btn-import" style="margin-top: 10px;">Import</button>
-          `;
-          modal.setTitle("Import HTML");
-          modal.setContent(content);
-          modal.open();
-
-          // Handle Import Action
-          document.getElementById("btn-import").onclick = () => {
-            const code = document.getElementById("import-area").value;
-            editor.setComponents(code); // Replace editor content
-            modal.close();
-          };
+      // Add English language button component
+      editor.DomComponents.addType("language-button-en", {
+        isComponent: (el) =>
+          el.tagName === "BUTTON" && el.dataset.lang === "en",
+        model: {
+          defaults: {
+            tagName: "button",
+            attributes: {
+              class: "language-btn",
+              "data-lang": "en",
+              onclick: "loadLanguage('en')",
+            },
+            content: `<img src="/asset/uk.png" alt="English" style="width: 24px; height: 24px;">`,
+          },
         },
-      });*/
+      });
+
+      // Add both buttons to the block manager
+      editor.BlockManager.add("language-button-hu", {
+        label: "Hungarian Button",
+        content: { type: "language-button-hu" },
+        category: "Basic",
+        attributes: { class: "fa fa-flag" },
+      });
+
+      editor.BlockManager.add("language-button-en", {
+        label: "English Button",
+        content: { type: "language-button-en" },
+        category: "Basic",
+        attributes: { class: "fa fa-flag" },
+      });
     </script>
   </body>
 </html>
