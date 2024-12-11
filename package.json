@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "grapesjs-preset-webpage": "^1.0.3",
     "grapesjs-tailwind": "^1.0.11"
   }
 }

@@ -109,8 +109,6 @@
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="asset/index.css" />
-  </head>
-  <body id="ivzg">
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const loadEl = document.querySelector("#load");
@@ -152,7 +150,21 @@
         }
       });
     </script>
+    <script>
+      async function loadLanguage(lang) {
+        const response = await fetch(`${lang}.json`);
+        const translations = await response.json();
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          el.textContent = translations[key];
+        });
+      }
 
+      // Example: Load English by default
+      loadLanguage("en");
+    </script>
+  </head>
+  <body>
     <header class="text-gray-600 body-font">
       <div
         class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
@@ -177,26 +189,25 @@
         <nav
           class="md:ml-auto flex flex-wrap items-center text-base justify-center"
         >
-          <a class="mr-5 hover:text-gray-900" href="product.html">Product</a>
+          <a href="product.html" class="mr-5 hover:text-gray-900">Product</a>
           <a class="mr-5 hover:text-gray-900">Second Link</a>
           <a class="mr-5 hover:text-gray-900">Third Link</a>
           <a class="mr-5 hover:text-gray-900">Fourth Link</a>
         </nav>
-        <button
-          class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
-        >
-          Button<svg
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            class="w-4 h-4 ml-1"
-          >
-            <path d="M5 12h14M12 5l7 7-7 7"></path>
-          </svg>
+        <!--button onclick="loadLanguage('hu')">
+          <img
+            src="asset/hungary-flag-round-circle-icon.png"
+            alt="Magyar"
+            style="width: 24px; height: 24px"
+          />
         </button>
+        <button onclick="loadLanguage('en')">
+          <img
+            src="asset/uk-flag-round-circle-icon.png"
+            alt="English"
+            style="width: 24px; height: 24px"
+          />
+        </button-->
       </div>
     </header>
     <footer class="text-gray-600 body-font"></footer>
@@ -209,6 +220,8 @@
             class="object-cover object-center h-full w-full"
           />
         </div>
+        <p data-i18n="greeting"></p>
+
         <div
           class="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center"
         >
