@@ -1,5 +1,6 @@
 {
-  "greeting": "Csőváz",
-  "farewell": "Viszlát",
+  "hero_title": "Könnyed elektromos töltőkezelés",
+  "hero_content": "Könnyedén monitorozhat, vezérelhet és optimalizálhat több elektromos töltőt. Akár kis flottát, akár nagy hálózatot kezel, szoftverünk intuitív eszközöket kínál a műveletek leegyszerűsítésére. Szerezzen valós idejű betekintést a töltők teljesítményébe, hozzon valósidejű adatok alapján döntéseket és biztosítson zökkenőmentes töltési élményt a felhasználók számára. A fejlett vezérlésnek és elemzésnek köszönhetően a töltési infrastruktúra bővítésére összpontosíthat, miközben minimalizálja az üzemeltetési kihívásokat.",
+  "product_details": "Részletek",
   "monitoring_content": "Kövesse nyomon az összes elektromos jármű töltőjét valós időben. Egy pillantással megtekintheti a töltő állapotát, az energiafogyasztást és a munkamenet részleteit, így mindig értesülhet a töltőhálózat teljesítményéről."
 }

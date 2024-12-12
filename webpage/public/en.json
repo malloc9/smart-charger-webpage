@@ -1,5 +1,6 @@
 {
-  "greeting": "Hello",
-  "farewell": "Goodbye",
+  "hero_title": "Effortless EV Charger Management at Your Fingertips",
+  "hero_content": "Monitor, control, and optimize multiple EV chargers with ease. Whether you're managing a small fleet or a large network, our software provides intuitive tools to simplify your operations. Gain real-time insights into charger performance, make data-driven decisions, and deliver a seamless charging experience to your users. With advanced control and analytics at your fingertips, you can focus on growing your charging infrastructure while minimizing operational challenges.",
+  "product_details": "Details",
   "monitoring_content": "Keep track of all your electric vehicle chargers in real time. View charger status, energy consumption, and session details at a glance, ensuring you’re always informed about your charging network's performance."
 }
