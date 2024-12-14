@@ -1,84 +1,517 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome to Firebase Hosting</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/11.0.2/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/11.0.2/firebase-auth-compat.js"></script>
+    <script
+      defer
+      src="/__/firebase/11.0.2/firebase-database-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/11.0.2/firebase-firestore-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/11.0.2/firebase-functions-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/11.0.2/firebase-messaging-compat.js"
+    ></script>
+    <script defer src="/__/firebase/11.0.2/firebase-storage-compat.js"></script>
+    <script
+      defer
+      src="/__/firebase/11.0.2/firebase-analytics-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/11.0.2/firebase-remote-config-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/11.0.2/firebase-performance-compat.js"
+    ></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+    <style media="screen">
+      body {
+        background: #eceff1;
+        color: rgba(0, 0, 0, 0.87);
+        font-family: Roboto, Helvetica, Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      #message {
+        background: white;
+        max-width: 360px;
+        margin: 100px auto 16px;
+        padding: 32px 24px;
+        border-radius: 3px;
+      }
+      #message h2 {
+        color: #ffa100;
+        font-weight: bold;
+        font-size: 16px;
+        margin: 0 0 8px;
+      }
+      #message h1 {
+        font-size: 22px;
+        font-weight: 300;
+        color: rgba(0, 0, 0, 0.6);
+        margin: 0 0 16px;
+      }
+      #message p {
+        line-height: 140%;
+        margin: 16px 0 24px;
+        font-size: 14px;
+      }
+      #message a {
+        display: block;
+        text-align: center;
+        background: #039be5;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: white;
+        padding: 16px;
+        border-radius: 4px;
+      }
+      #message,
+      #message a {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      }
+      #load {
+        color: rgba(0, 0, 0, 0.4);
+        text-align: center;
+        font-size: 13px;
+      }
+      @media (max-width: 600px) {
+        body,
+        #message {
+          margin-top: 0;
+          background: white;
+          box-shadow: none;
+        }
+        body {
+          border-top: 16px solid #ffa100;
+        }
+      }
+    </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="asset/index.css" />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const loadEl = document.querySelector("#load");
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.firestore().doc('/foo/bar').get().then(() => { });
+        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        // firebase.analytics(); // call to activate
+        // firebase.analytics().logEvent('tutorial_completed');
+        // firebase.performance(); // call to activate
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+          let features = [
+            "auth",
+            "database",
+            "firestore",
+            "functions",
+            "messaging",
+            "storage",
+            "analytics",
+            "remoteConfig",
+            "performance",
+          ].filter((feature) => typeof app[feature] === "function");
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(
+            ", "
+          )}`;
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent =
+            "Error loading the Firebase SDK, check the console.";
+        }
+      });
+    </script>
+    <script>
+      async function loadLanguage(lang) {
+        const response = await fetch(`${lang}.json`);
+        const translations = await response.json();
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          el.textContent = translations[key];
+        });
+      }
+
+      // Example: Load English by default
+      loadLanguage("hu");
+    </script>
   </head>
-  <body id="ivzg">
-  <header class="text-gray-600 body-font">
-    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5">
-        </path>
-        </svg><span class="ml-3 text-xl">Tailblocks</span></a>
-      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-        <a class="mr-5 hover:text-gray-900">First Link</a>
-        <a class="mr-5 hover:text-gray-900">Second Link</a>
-        <a class="mr-5 hover:text-gray-900">Third Link</a>
-        <a class="mr-5 hover:text-gray-900">Fourth Link</a>
-      </nav>
-      <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Button<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4 h-4 ml-1">
-        <path d="M5 12h14M12 5l7 7-7 7">
-        </path>
-        </svg></button>
-    </div>
-  </header>
-  <section class="text-gray-600 body-font">
-    <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-      <div class="text-center lg:w-2/3 w-full">
-        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Real-time Charger Monitoring
-        </h1>
-        <p class="mb-8 leading-relaxed">Stay updated on your charging network's status with live data. Instantly view whether chargers are online, in use, or idle, and address issues as they arise to minimize downtime.
-        </p>
+  <body id="itrx">
+    <header class="text-gray-600 body-font">
+      <div
+        class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+      >
+        <a
+          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+          ><img
+            src="asset/electricity-svgrepo-com.svg"
+            width="40px"
+            alt="Smart Charge"
+          /><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5">
+          </path
+          ><span class="ml-3 text-xl"><b id="iejcp">SmartCharge </b></span></a
+        >
+        <nav
+          class="md:ml-auto flex flex-wrap items-center text-base justify-center"
+        >
+          <a href="product.html" class="mr-5 hover:text-gray-900">Product</a>
+         
+        <button
+          data-lang="hu"
+          onclick="loadLanguage('hu')"
+          class="language-btn"
+        >
+          <img
+            src="/asset/hungary.png"
+            alt="Magyar"
+            style="width: 24px; height: 24px"
+          />
+        </button>
+        <button
+          data-lang="en"
+          onclick="loadLanguage('en')"
+          class="language-btn"
+        >
+          <img
+            src="/asset/uk.png"
+            alt="English"
+            style="width: 24px; height: 24px"
+          />
+        </button>
       </div>
-    </div>
-  </section>
-  <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-    <div class="text-center lg:w-2/3 w-full">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Remote Start/Stop Functionality
-      </h1>
-      <p class="mb-8 leading-relaxed">Manage charging sessions from anywhere. Start or stop chargers with a click, giving you full control even when you're offsite.
-      </p>
-    </div>
-  </div>
-  <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-    <div class="text-center lg:w-2/3 w-full">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Energy Usage and Cost Tracking
-      </h1>
-      <p class="mb-8 leading-relaxed">Track energy consumption for individual chargers or the entire network. Understand your operational costs and identify ways to save energy and money.
-      </p>
-    </div>
-  </div>
-  <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-    <div class="text-center lg:w-2/3 w-full">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">User Access Management
-      </h1>
-      <p class="mb-8 leading-relaxed">Control who can use your chargers with configurable user roles. Grant or revoke access, ensuring only authorized users can initiate charging sessions.
-      </p>
-    </div>
-  </div>
-  <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-    <div class="text-center lg:w-2/3 w-full">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Maintenance Alerts
-      </h1>
-      <p class="mb-8 leading-relaxed">Receive proactive notifications about maintenance needs or potential issues. Prevent breakdowns and keep your chargers in optimal condition.
-      </p>
-    </div>
-  </div>
-  <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-    <div class="text-center lg:w-2/3 w-full">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Integration with Payment Systems
-      </h1>
-      <p class="mb-8 leading-relaxed">
-      <p>Enable seamless billing by integrating your chargers with payment systems. Offer flexible options like credit cards, mobile wallets, or subscription models.
-      </p>
-      <p>Let me know if you need additional details for any of these features!
-      </p>
-      </p>
-  </div>
-  </div>
-</body>
+    </header>
+    <footer class="text-gray-600 body-font"></footer>
+    <section class="text-gray-600 body-font"></section>
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-24 mx-auto">
+        <div
+          class="flex flex-wrap w-full mb-20 flex-col items-center text-center"
+        >
+          <h1
+            class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900"
+          >
+            Monitor, control, optimize
+          </h1>
+          <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">
+            Increase operational efficiency. Reduce downtime with proactive
+            monitoring. Save energy costs with analytics. Scalable for multiple
+            locations.
+          </p>
+        </div>
+        <div class="flex flex-wrap -m-4">
+          <div class="xl:w-1/3 md:w-1/2 p-4">
+            <div class="border border-gray-200 p-6 rounded-lg">
+              <div
+                class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4"
+              >
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  class="w-6 h-6"
+                >
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                </svg>
+              </div>
+              <h2 class="text-lg text-gray-900 font-medium title-font mb-2">
+                Real-time Charger Monitoring
+              </h2>
+              <p class="leading-relaxed text-base">
+                Stay updated on your charging network's status with live data.
+                Instantly view whether chargers are online, in use, or idle, and
+                address issues as they arise to minimize downtime.
+              </p>
+            </div>
+          </div>
+          <div class="xl:w-1/3 md:w-1/2 p-4">
+            <div class="border border-gray-200 p-6 rounded-lg">
+              <div
+                class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4"
+              >
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  class="w-6 h-6"
+                >
+                  <circle cx="6" cy="6" r="3"></circle>
+                  <circle cx="6" cy="18" r="3"></circle>
+                  <path
+                    d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"
+                  ></path>
+                </svg>
+              </div>
+              <h2 class="text-lg text-gray-900 font-medium title-font mb-2">
+                Remote Start/Stop Functionality
+              </h2>
+              <p class="leading-relaxed text-base">
+                Manage charging sessions from anywhere. Start or stop chargers
+                with a click, giving you full control even when you're offsite.
+              </p>
+            </div>
+          </div>
+          <div class="xl:w-1/3 md:w-1/2 p-4">
+            <div class="border border-gray-200 p-6 rounded-lg">
+              <div
+                class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4"
+              >
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  class="w-6 h-6"
+                >
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <h2 class="text-lg text-gray-900 font-medium title-font mb-2">
+                Energy Usage and Cost Tracking
+              </h2>
+              <p class="leading-relaxed text-base">
+                Track energy consumption for individual chargers or the entire
+                network. Understand your operational costs and identify ways to
+                save energy and money.
+              </p>
+            </div>
+          </div>
+          <div class="xl:w-1/3 md:w-1/2 p-4">
+            <div class="border border-gray-200 p-6 rounded-lg">
+              <div
+                class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4"
+              >
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  class="w-6 h-6"
+                >
+                  <path
+                    d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"
+                  ></path>
+                </svg>
+              </div>
+              <h2 class="text-lg text-gray-900 font-medium title-font mb-2">
+                User Access Management
+              </h2>
+              <p class="leading-relaxed text-base">
+                Control who can use your chargers with configurable user roles.
+                Grant or revoke access, ensuring only authorized users can
+                initiate charging sessions.
+              </p>
+            </div>
+          </div>
+          <div class="xl:w-1/3 md:w-1/2 p-4">
+            <div class="border border-gray-200 p-6 rounded-lg">
+              <div
+                class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4"
+              >
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  class="w-6 h-6"
+                >
+                  <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                </svg>
+              </div>
+              <h2 class="text-lg text-gray-900 font-medium title-font mb-2">
+                Maintenance Alerts
+              </h2>
+              <p class="leading-relaxed text-base">
+                Receive proactive notifications about maintenance needs or
+                potential issues. Prevent breakdowns and keep your chargers in
+                optimal condition.
+              </p>
+            </div>
+          </div>
+          <div class="xl:w-1/3 md:w-1/2 p-4">
+            <div class="border border-gray-200 p-6 rounded-lg">
+              <div
+                class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4"
+              >
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  class="w-6 h-6"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <h2 class="text-lg text-gray-900 font-medium title-font mb-2">
+                Integration with Payment Systems
+              </h2>
+              <p class="leading-relaxed text-base">
+                Enable seamless billing by integrating your chargers with
+                payment systems. Offer flexible options like credit cards,
+                mobile wallets, or subscription models.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="text-gray-600 body-font">
+      <div
+        class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col"
+      >
+        <div
+          class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left md:mt-0 mt-10"
+        >
+          <a
+            class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
+            ><img
+              src="asset/electricity-svgrepo-com.svg"
+              width="40px"
+              alt="Smart Charge"
+            /><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5">
+            </path
+            ><span class="ml-3 text-xl">Smart Charge</span></a
+          >
+          <p class="mt-2 text-sm text-gray-500">
+            Air plant banjo lyft occupy retro adaptogen indego
+          </p>
+        </div>
+        <div
+          class="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first"
+        >
+          <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+            <h2
+              class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3"
+            >
+              CATEGORIES
+            </h2>
+            <nav class="list-none mb-10">
+              <li>
+                <a href="product.html" class="text-gray-600 hover:text-gray-800"
+                  >Product</a
+                >
+              </li>
+              <li></li>
+              <li></li>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-100">
+        <div
+          class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row"
+        >
+          <p class="text-gray-500 text-sm text-center sm:text-left">
+            © 2024 Smart Charge —
+            <a
+              href="https://twitter.com/smartcharge"
+              rel="noopener noreferrer"
+              target="_blank"
+              class="text-gray-600 ml-1"
+              >@knyttneve</a
+            >
+          </p>
+          <span
+            class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start"
+            ><a class="text-gray-500"
+              ><svg
+                fill="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                class="w-5 h-5"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+                ></path></svg></a
+            ><a class="ml-3 text-gray-500"
+              ><svg
+                fill="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                class="w-5 h-5"
+              >
+                <path
+                  d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"
+                ></path></svg></a
+            ><a class="ml-3 text-gray-500"
+              ><svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                class="w-5 h-5"
+              >
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path
+                  d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"
+                ></path></svg></a
+            ><a class="ml-3 text-gray-500"
+              ><svg
+                fill="currentColor"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke="none"
+                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+                ></path>
+                <circle cx="4" cy="4" r="2" stroke="none"></circle></svg></a
+          ></span>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
