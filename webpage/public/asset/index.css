@@ -12,3 +12,17 @@ body {
   width: 24px;
   height: 24px;
 }
+#ikj9i {
+  width: 24px;
+  height: 24px;
+}
+#igl3y {
+  width: 24px;
+  height: 24px;
+}
+.object-cover.object-center.rounded {
+  opacity: 0.73;
+}
+.object-cover.object-center.h-full.w-full {
+  height: 300px;
+}

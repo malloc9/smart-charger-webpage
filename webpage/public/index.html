@@ -159,12 +159,10 @@
           el.textContent = translations[key];
         });
       }
-
-      // Example: Load English by default
       loadLanguage("hu");
     </script>
   </head>
-  <body id="itrx">
+  <body>
     <header class="text-gray-600 body-font">
       <div
         class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
@@ -183,6 +181,8 @@
           class="md:ml-auto flex flex-wrap items-center text-base justify-center"
         >
           <a href="product.html" class="mr-5 hover:text-gray-900">Product</a>
+          <a href="product2.html" class="mr-5 hover:text-gray-900">Product2</a>
+
           <button
             data-lang="hu"
             onclick="loadLanguage('hu')"
@@ -258,13 +258,11 @@
           <a
             class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
             ><img
-            src="asset/electricity-svgrepo-com.svg"
-            width="40px"
-            alt="Smart Charge"
-          />
-              <path
-                d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-              ></path></svg
+              src="asset/electricity-svgrepo-com.svg"
+              width="40px"
+              alt="Smart Charge"
+            /><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5">
+            </path
             ><span class="ml-3 text-xl">Smart Charge</span></a
           >
           <p class="mt-2 text-sm text-gray-500">
@@ -282,7 +280,9 @@
             </h2>
             <nav class="list-none mb-10">
               <li>
-                <a class="text-gray-600 hover:text-gray-800" href="product.html">Product</a>
+                <a href="product.html" class="text-gray-600 hover:text-gray-800"
+                  >Product</a
+                >
               </li>
               <li></li>
               <li></li>
